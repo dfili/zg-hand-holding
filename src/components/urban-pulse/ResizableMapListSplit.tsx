@@ -104,7 +104,7 @@ export function ResizableMapListSplit({ map, list }: ResizableMapListSplitProps)
     >
       {/* Map pane — fixed to allocated space; no overflow scroll */}
       <section
-        className="relative min-h-[100px] shrink-0 overflow-hidden border-b border-zinc-800 lg:min-h-0 lg:min-w-0 lg:border-b-0 lg:border-r"
+        className="relative min-h-[100px] shrink-0 overflow-hidden border-b border-zinc-200 lg:min-h-0 lg:min-w-0 lg:border-b-0 lg:border-r"
         style={{
           flex: `0 0 ${pct}%`,
           minWidth: 0,
@@ -137,9 +137,9 @@ export function ResizableMapListSplit({ map, list }: ResizableMapListSplitProps)
             setMapShare((s) => clampShare(s + step));
           }
         }}
-        className="group relative z-10 flex shrink-0 cursor-row-resize items-center justify-center border-zinc-700 bg-zinc-900 py-1 lg:w-2 lg:cursor-col-resize lg:px-0 lg:py-0"
+        className="group relative z-10 flex shrink-0 cursor-row-resize items-center justify-center border-zinc-200 bg-zinc-100 py-1 lg:w-2 lg:cursor-col-resize lg:px-0 lg:py-0"
       >
-        <span className="h-1 w-10 rounded-full bg-zinc-600 group-hover:bg-emerald-500 lg:h-10 lg:w-1" />
+        <span className="h-1 w-10 rounded-full bg-zinc-400 group-hover:bg-brand lg:h-10 lg:w-1" />
       </div>
 
       {/* List pane — scrolls internally */}

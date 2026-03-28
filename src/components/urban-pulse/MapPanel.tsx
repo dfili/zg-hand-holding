@@ -99,18 +99,17 @@ export function MapPanel({
 
   if (!apiKey) {
     return (
-      <div className="flex h-full min-h-[280px] flex-col items-center justify-center gap-2 bg-zinc-900 p-6 text-center text-sm text-zinc-400">
-        <p className="font-medium text-zinc-200">Map unavailable</p>
+      <div className="flex h-full min-h-[280px] flex-col items-center justify-center gap-2 bg-white p-6 text-center text-sm text-zinc-600">
+        <p className="font-medium text-zinc-900">Map unavailable</p>
         <p>
           Set{" "}
-          <code className="rounded bg-zinc-800 px-1 py-0.5 text-xs">
+          <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs text-zinc-800">
             NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
           </code>{" "}
-          in <code className="rounded bg-zinc-800 px-1 py-0.5 text-xs">.env.local</code>
+          in <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs text-zinc-800">.env.local</code>
         </p>
         <p className="max-w-sm text-xs text-zinc-500">
-          Enable Maps JavaScript API for your Google Cloud project. The list view
-          still works with mock data.
+          Enable Maps JavaScript API for your Google Cloud project.           The list view still works without a map key.
         </p>
       </div>
     );
@@ -118,7 +117,7 @@ export function MapPanel({
 
   if (loadError) {
     return (
-      <div className="flex h-full items-center justify-center bg-zinc-900 p-4 text-sm text-red-400">
+      <div className="flex h-full items-center justify-center bg-white p-4 text-sm text-red-600">
         Failed to load Google Maps
       </div>
     );
@@ -126,7 +125,7 @@ export function MapPanel({
 
   if (!isLoaded) {
     return (
-      <div className="flex h-full items-center justify-center bg-zinc-900 text-sm text-zinc-500">
+      <div className="flex h-full items-center justify-center bg-white text-sm text-zinc-500">
         Loading map…
       </div>
     );
@@ -163,7 +162,7 @@ export function MapPanel({
               <p className="mt-1 text-xs text-zinc-600">
                 {infoProblem.category} · {THEME_LABELS[infoProblem.theme] ?? infoProblem.theme}
               </p>
-              <p className="mt-2 font-mono text-sm font-semibold text-emerald-800">
+              <p className="mt-2 font-mono text-sm font-semibold text-brand">
                 Priority: {infoProblem.priorityScore}
               </p>
               <p className="mt-2 text-xs leading-relaxed text-zinc-700">

@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Urban Pulse · Zagreb",
+  title: "ZG Hand Holding · Zagreb",
   description: "Civic issues dashboard — map and list view",
 };
 

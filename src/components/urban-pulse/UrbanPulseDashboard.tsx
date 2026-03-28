@@ -2,8 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-import { MOCK_PROBLEMS } from "../../data/problems";
 import { filterProblems, type FilterState } from "../../lib/filterProblems";
+import { initFirebaseAnalytics } from "../../lib/firebaseAnalytics";
+import { useProblemsFromFirestore } from "../../hooks/useProblemsFromFirestore";
 import type { Complexity, Theme } from "../../types/problem";
 import { FilterSidebar } from "./FilterSidebar";
 import { MapPanel } from "./MapPanel";
@@ -11,6 +12,12 @@ import { ProblemList } from "./ProblemList";
 import { ResizableMapListSplit } from "./ResizableMapListSplit";
 
 export function UrbanPulseDashboard() {
+  const { problems: sourceProblems, loading, error } = useProblemsFromFirestore();
+
+  useEffect(() => {
+    void initFirebaseAnalytics();
+  }, []);
+
   const [priorityMin, setPriorityMin] = useState(0);
   const [priorityMax, setPriorityMax] = useState(100);
   const [complexity, setComplexity] = useState<"all" | Complexity>("all");
@@ -33,8 +40,8 @@ export function UrbanPulseDashboard() {
   );
 
   const visible = useMemo(
-    () => filterProblems(MOCK_PROBLEMS, filterState),
-    [filterState]
+    () => filterProblems(sourceProblems, filterState),
+    [sourceProblems, filterState]
   );
 
   useEffect(() => {
@@ -62,7 +69,23 @@ export function UrbanPulseDashboard() {
   }
 
   return (
-    <div className="flex h-svh w-full flex-col overflow-hidden bg-zinc-950 lg:flex-row">
+    <div className="relative flex h-svh w-full flex-col overflow-hidden bg-white lg:flex-row">
+      {error && (
+        <div
+          className="absolute left-0 right-0 top-0 z-40 border-b border-amber-900/60 bg-amber-950/90 px-4 py-2 text-center text-sm text-amber-100"
+          role="alert"
+        >
+          {error}
+        </div>
+      )}
+      {loading && (
+        <div className="pointer-events-none absolute inset-0 z-30 flex items-center justify-center bg-white/60 backdrop-blur-[2px]">
+          <p className="rounded-lg border border-zinc-200 bg-white px-4 py-2 text-sm text-zinc-800 shadow-sm">
+            Loading problems from Firestore…
+          </p>
+        </div>
+      )}
+
       <FilterSidebar
         priorityMin={priorityMin}
         priorityMax={priorityMax}
