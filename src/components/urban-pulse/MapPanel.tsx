@@ -165,9 +165,16 @@ export function MapPanel({
               <p className="mt-2 font-mono text-sm font-semibold text-brand">
                 Priority: {infoProblem.priorityScore}
               </p>
-              <p className="mt-2 text-xs leading-relaxed text-zinc-700">
-                {truncate(infoProblem.description)}
-              </p>
+              {infoProblem.summary ? (
+                <p className="mt-2 text-xs leading-relaxed text-zinc-800">
+                  <span className="font-medium text-zinc-600">Sažetak: </span>
+                  {truncate(infoProblem.summary, 280)}
+                </p>
+              ) : (
+                <p className="mt-2 text-xs leading-relaxed text-zinc-700">
+                  {truncate(infoProblem.description)}
+                </p>
+              )}
             </div>
           </InfoWindow>
         )}

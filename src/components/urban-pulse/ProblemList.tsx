@@ -66,9 +66,16 @@ export function ProblemList({
                   <span>·</span>
                   <span>{p.neighborhood}</span>
                 </div>
-                <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-zinc-500">
-                  {truncate(p.description)}
-                </p>
+                {p.summary ? (
+                  <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-zinc-800">
+                    <span className="font-medium text-zinc-600">Sažetak: </span>
+                    {truncate(p.summary, 220)}
+                  </p>
+                ) : (
+                  <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-zinc-500">
+                    {truncate(p.description)}
+                  </p>
+                )}
               </button>
             </li>
           );

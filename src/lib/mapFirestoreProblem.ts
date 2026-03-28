@@ -59,6 +59,12 @@ export function firestoreDocToUrbanProblem(
     lng = DEFAULT_CENTER.lng;
   }
 
+  const summaryRaw = data.summary ?? data.aiSummary ?? data.short_summary;
+  const summary =
+    typeof summaryRaw === "string" && summaryRaw.trim() !== ""
+      ? summaryRaw.trim()
+      : "";
+
   return {
     id: docId,
     title,
@@ -68,6 +74,7 @@ export function firestoreDocToUrbanProblem(
     complexity,
     neighborhood: str(data.neighborhood) || "Zagreb",
     description: str(data.description),
+    summary,
     lat,
     lng,
   };

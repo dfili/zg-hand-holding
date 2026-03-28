@@ -16,7 +16,10 @@ export interface UrbanProblem {
   priorityScore: number;
   complexity: Complexity;
   neighborhood: string;
+  /** Full post body (often HTML from Reddit). */
   description: string;
+  /** Short AI or extractive summary for UI cards and map popups. */
+  summary?: string;
   lat: number;
   lng: number;
 }
