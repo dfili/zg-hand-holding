@@ -1,0 +1,20 @@
+/** Zagreb neighborhoods for filter dropdown / search (Croatian names). */
+export const ZAGREB_NEIGHBORHOODS: string[] = [
+  "Donji grad",
+  "Gornji grad – Medveščak",
+  "Trešnjevka",
+  "Trešnjevka – sjever",
+  "Trešnjevka – jug",
+  "Maksimir",
+  "Dubrava",
+  "Peščenica",
+  "Trnje",
+  "Novi Zagreb",
+  "Črnomerec",
+  "Podsused",
+  "Podsused – Vrapče",
+  "Stenjevec",
+  "Sesvete",
+  "Siget",
+  "Kanal",
+];
